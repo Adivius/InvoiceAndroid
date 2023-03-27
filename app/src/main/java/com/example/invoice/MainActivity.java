@@ -1,6 +1,5 @@
 package com.example.invoice;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,11 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -43,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton main_button_add = findViewById(R.id.main_button_add);
         main_button_add.setOnClickListener(view -> showAddUserDialog());
 
+        FloatingActionButton main_save = findViewById(R.id.main_save);
+        main_save.setOnClickListener(view -> showPrintDialog());
+
         RecyclerView main_rec_user = findViewById(R.id.main_rec_user);
         main_rec_user.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         GroupieAdapter adapter = new GroupieAdapter();
@@ -53,10 +53,19 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener((item, view) -> {
             Intent myIntent = new Intent(MainActivity.this, UserActivity.class);
             UserItem userItem = (UserItem) item;
-            myIntent.putExtra("name", userItem.user.NAME);
+            myIntent.putExtra("name", userItem.NAME);
             startActivity(myIntent);
             refreshUserList();
         });
+    }
+
+    private void showPrintDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Speichern")
+                .setMessage("Der aktuelle Stand wird auf dem Server gespeichert!")
+                .setIcon(R.drawable.ic_save)
+                .setPositiveButton("Okay", (dialog, whichButton) -> Toast.makeText(main, Transmitter.save(), Toast.LENGTH_SHORT).show())
+                .setNegativeButton("Abbrechen", (dialog, whichButton) -> dialog.cancel()).show();
     }
 
     public void refreshUserList() {
@@ -65,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.clear();
         for (String string : Transmitter.getUser()) {
             if (!Objects.equals(string, "False")) {
-                adapter.add(new UserItem(new User(string)));
+                adapter.add(new UserItem(string));
             }
         }
     }
@@ -115,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Verbindung:")
                 .setMessage("Verbinde dich mit Ip-adresse und Port")
-                .setIcon(R.drawable.ic_refresh)
+                .setIcon(R.drawable.ic_cell_wifi)
                 .setView(input)
                 .setPositiveButton("Speichern", (dialog, whichButton) -> {
                     saveConnection(new TransmitterConnection(input.getText().toString()));

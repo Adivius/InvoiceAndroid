@@ -66,7 +66,7 @@ public class UserActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Warnung")
                 .setMessage("Möchtest du \"" + NAME + "\" wirklich löschen?")
-                .setIcon(R.drawable.ic_warning)
+                .setIcon(R.drawable.ic_group_remove)
                 .setPositiveButton("Löschen", (dialog, whichButton) -> deleteUser())
                 .setNegativeButton("Abbrechen", (dialog, whichButton) -> dialog.cancel()).show();
     }
@@ -79,7 +79,7 @@ public class UserActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Übersicht von \"" + NAME + "\"")
                 .setMessage(message)
-                .setIcon(R.drawable.ic_info)
+                .setIcon(R.drawable.ic_calendar_today)
                 .setPositiveButton("Schließen", null).show();
     }
 

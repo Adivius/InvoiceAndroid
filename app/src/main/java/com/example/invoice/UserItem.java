@@ -10,16 +10,16 @@ import com.xwray.groupie.Item;
 
 class UserItem extends Item<GroupieViewHolder> {
 
-    public User user;
+    public String NAME;
 
-    public UserItem(User user) {
-        this.user = user;
+    public UserItem(String name) {
+        this.NAME = name;
     }
 
     @Override
     public void bind(@NonNull GroupieViewHolder viewHolder, int position) {
         TextView textView = viewHolder.itemView.findViewById(R.id.item_user_username);
-        textView.setText(user.NAME);
+        textView.setText(NAME);
     }
 
     @Override

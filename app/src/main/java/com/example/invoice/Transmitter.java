@@ -30,6 +30,7 @@ public abstract class Transmitter {
     public static final String ID_GET_ORDERS_FOR_MONTH = "13";
     public static final String ID_GET_PURCHASE_FOR_MONTH = "14";
     public static final String ID_GET_TOTAL = "15";
+    public static final String ID_PRINT = "16";
     public static final String SEPARATOR = ":";
 
 
@@ -144,6 +145,15 @@ public abstract class Transmitter {
         String[] result = sendRequest(ID_GET_TOTAL + SEPARATOR + identifier + SEPARATOR + month).split(SEPARATOR);
         System.out.println(result);
         return result;
+    }
+
+    public static String save(){
+        String result = sendRequest(ID_PRINT);
+        if (result.equals("True")){
+            return "Erfolgreich gespeichert!";
+        }else{
+            return "Es konnte nicht gespeichert werden!";
+        }
     }
 
 }
