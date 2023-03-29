@@ -30,7 +30,7 @@ public abstract class Transmitter {
     public static final String ID_GET_ORDERS_FOR_MONTH = "13";
     public static final String ID_GET_PURCHASE_FOR_MONTH = "14";
     public static final String ID_GET_TOTAL = "15";
-    public static final String ID_PRINT = "16";
+    public static final String ID_EXPORT = "16";
     public static final String SEPARATOR = ":";
 
 
@@ -147,8 +147,8 @@ public abstract class Transmitter {
         return result;
     }
 
-    public static String save(){
-        String result = sendRequest(ID_PRINT);
+    public static String export(){
+        String result = sendRequest(ID_EXPORT);
         if (result.equals("True")){
             return "Erfolgreich gespeichert!";
         }else{

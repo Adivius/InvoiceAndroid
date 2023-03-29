@@ -29,6 +29,8 @@ public class ChangeActivity extends AppCompatActivity {
         String NAME = intent.getStringExtra("name");
         int ID = intent.getIntExtra("id", 0);
 
+        getSupportActionBar().setTitle("Mahlzeit registrieren");
+
         CalendarView calendarView = findViewById(R.id.change_calendar);
         TextView textView = findViewById(R.id.change_text_view);
         SeekBar seekBar = findViewById(R.id.change_slider);

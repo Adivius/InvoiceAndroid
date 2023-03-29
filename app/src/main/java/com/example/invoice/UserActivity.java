@@ -28,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
             ID = Integer.parseInt(id_result);
         }
 
-        getSupportActionBar().setTitle(NAME);
+        getSupportActionBar().setTitle("Übersicht von \"" + NAME + "\"");
 
         Button user_remove = findViewById(R.id.user_remove);
         user_remove.setOnClickListener(view -> showDeleteDialog());

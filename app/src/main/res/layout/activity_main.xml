@@ -35,6 +35,6 @@
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/main_button_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_save" />
+        app:srcCompat="@drawable/ic_export" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

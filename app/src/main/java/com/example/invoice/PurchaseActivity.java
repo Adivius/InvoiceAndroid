@@ -26,6 +26,8 @@ public class PurchaseActivity extends AppCompatActivity {
         String NAME = getIntent().getStringExtra("name");
         int ID = getIntent().getIntExtra("id", 0);
 
+        getSupportActionBar().setTitle("Einkauf registrieren");
+
         CalendarView calendarView = findViewById(R.id.purchase_calendar);
         EditText editText = findViewById(R.id.purchase_bill);
         Button button = findViewById(R.id.purchase_add);

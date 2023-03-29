@@ -25,6 +25,8 @@ public class SummaryActivity extends AppCompatActivity {
         NAME = intent.getStringExtra("name");
         ID = intent.getIntExtra("id", 0);
 
+        getSupportActionBar().setTitle("Übersicht von \"" + NAME + "\"");
+
 
         ArrayList<String> month = Transmitter.getAll();
 
@@ -55,13 +57,13 @@ public class SummaryActivity extends AppCompatActivity {
         textView3.setText("Insgesamt: " + total[3] + "€");
 
         TextView textView4 = findViewById(R.id.summary_start);
-        textView4.setText("Startkapital: : " + total[4] + "€");
+        textView4.setText("Saldo alt: " + total[4] + "€");
 
         float end = Float.parseFloat(total[3]) + Float.parseFloat(total[4]);
 
         end = Math.round(end * 100.0f) / 100.0f;
 
         TextView textView5 = findViewById(R.id.summary_end);
-        textView5.setText("Endkapital: " + end + "€");
+        textView5.setText("Saldo neu: " + end + "€");
     }
 }

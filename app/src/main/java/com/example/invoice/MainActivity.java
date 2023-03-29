@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Speichern")
                 .setMessage("Der aktuelle Stand wird auf dem Server gespeichert!")
-                .setIcon(R.drawable.ic_save)
-                .setPositiveButton("Okay", (dialog, whichButton) -> Toast.makeText(main, Transmitter.save(), Toast.LENGTH_SHORT).show())
+                .setIcon(R.drawable.ic_export)
+                .setPositiveButton("Okay", (dialog, whichButton) -> Toast.makeText(main, Transmitter.export(), Toast.LENGTH_SHORT).show())
                 .setNegativeButton("Abbrechen", (dialog, whichButton) -> dialog.cancel()).show();
     }
 
@@ -111,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_main_settings:
                 showSettingsDialog();
                 return true;
+            case R.id.menu_main_refresh:
+                refreshUserList();
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }
@@ -126,10 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("Verbinde dich mit Ip-adresse und Port")
                 .setIcon(R.drawable.ic_cell_wifi)
                 .setView(input)
-                .setPositiveButton("Speichern", (dialog, whichButton) -> {
-                    saveConnection(new TransmitterConnection(input.getText().toString()));
-                    refreshUserList();
-                })
+                .setPositiveButton("Speichern", (dialog, whichButton) -> saveConnection(new TransmitterConnection(input.getText().toString())))
                 .setNegativeButton("Abbrechen", (dialog, whichButton) -> dialog.cancel()).show();
     }
 
